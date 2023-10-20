@@ -1,13 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<link rel="stylesheet" href="/main.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vue Router 4 + TS</title>
+		<script lang="ts" type="module">
+			import { createApp } from 'vue'
+			import { createRouter, createWebHistory } from 'vue-router'
+			import App from '@/App.vue'
+			import Home from '@/views/Home.vue'
+			// 引入页面组件 start
+			import Brazil from '@/views/Brazil.vue'
+			import Hawaii from '@/views/Hawaii.vue'
+			import Jamaica from '@/views/Jamaica.vue'
+			import Panama from '@/views/Panama.vue'
+			import About from '@/views/About.vue'
+			// 引入页面组件 end
+
+			// 创建path和组件映射的路由
+			const router = createRouter({
+				// 使用浏览器历史功能
+				history: createWebHistory(),
+				routes: [
+					{
+						path: '/',
+						component: Home
+					},
+					{
+						path: '/brazil',
+						component: Brazil
+					},
+					{
+						path: '/panama',
+						component: Panama
+					},
+					{
+						path: '/Hawaii',
+						component: Hawaii
+					},
+					{
+						path: '/jamaica',
+						component: Jamaica
+					},
+					{
+						path: '/about',
+						component: About
+					}
+				]
+			})
+
+			createApp(App)
+				// 应用实例使用路由
+				.use(router)
+				// 应用实例挂在到指定容器
+				.mount('#app')
+		</script>
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
 </html>
