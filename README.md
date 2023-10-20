@@ -41,3 +41,48 @@ npm install
 
 哈希模式在内部传递实际 URL 之前使用一个哈希字符(`#`), 效果是其后面的 URL 部分不会被发送到服务器，这使得请求始终发送到服务器上的同一个入口,
 所以使用哈希模式不需要在服务器层面上进行任何特殊处理。不过哈希模式也有缺点。最明显的是，它有点难看。更重要的是，它会影响搜索引擎优化(SEO)。
+
+## About Lazy Loading Routes
+
+在之前，我们在进入页面时，就通过 import 直接加载路由组件，所有组件在同一时间被载入，
+而我们的代码编译的结果是这样的:
+
+```
+[MacBook-Pro:~/Nodeprojects/vue-router4] waisam % npm run build
+
+> vue-router4@0.0.0 build
+> vue-tsc && vite build
+
+vite v4.5.0 building for production...
+✓ 37 modules transformed.
+dist/index.html                 0.42 kB │ gzip:  0.30 kB
+dist/assets/index-004e8a7e.js  94.09 kB │ gzip: 31.72 kB
+✓ built in 1.86s
+```
+
+所有的组件被编译成一个文件，因此也会一起被加载，当应用中存在大量组件时，这无疑是一种负担。
+因此，如果路由能够对组件进行懒加载设置，将大大提高页面加载的效率。正好 vue-router 也为我们
+提供了这样的功能。
+
+路由组件进行懒加载设置后的编译结果如下:
+
+```
+[MacBook-Pro:~/Nodeprojects/vue-router4] waisam % npm run build
+
+> vue-router4@0.0.0 build
+> vue-tsc && vite build
+
+vite v4.5.0 building for production...
+✓ 38 modules transformed.
+dist/index.html                   0.42 kB │ gzip:  0.30 kB
+dist/assets/Jamaica-99a66b50.js   0.17 kB │ gzip:  0.16 kB
+dist/assets/Brazil-9f73810c.js    0.17 kB │ gzip:  0.16 kB
+dist/assets/Panama-9151b416.js    0.17 kB │ gzip:  0.16 kB
+dist/assets/Hawaii-8a1526ad.js    0.17 kB │ gzip:  0.16 kB
+dist/assets/About-9f8d7a3a.js     0.25 kB │ gzip:  0.21 kB
+dist/assets/Home-0983d685.js      0.49 kB │ gzip:  0.35 kB
+dist/assets/index-012e154b.js    94.39 kB │ gzip: 32.00 kB
+✓ built in 2.01s
+```
+
+可以看到每一个组件都被编译成单独的文件。

@@ -8,45 +8,48 @@
 		<title>Vue Router 4 + TS</title>
 		<script lang="ts" type="module">
 			import { createApp } from 'vue'
-			import { createRouter, createWebHashHistory } from 'vue-router'
+			import { createRouter, createWebHistory } from 'vue-router'
 			import App from '@/App.vue'
 			import Home from '@/views/Home.vue'
 			// 引入页面组件 start
-			import Brazil from '@/views/Brazil.vue'
-			import Hawaii from '@/views/Hawaii.vue'
-			import Jamaica from '@/views/Jamaica.vue'
-			import Panama from '@/views/Panama.vue'
-			import About from '@/views/About.vue'
+			// 不再在此加载路由映射的组件, 而是使用懒加载的方式，当需要组件资源时再加载
+			// import Brazil from '@/views/Brazil.vue'
+			// import Hawaii from '@/views/Hawaii.vue'
+			// import Jamaica from '@/views/Jamaica.vue'
+			// import Panama from '@/views/Panama.vue'
+			// import About from '@/views/About.vue'
 			// 引入页面组件 end
 
 			// 创建path和组件映射的路由
 			const router = createRouter({
-				// 使用浏览器历史功能
-				history: createWebHashHistory(),
+				// 使用浏览器历史功能, 使用HTML5历史模式
+				history: createWebHistory(),
 				routes: [
 					{
 						path: '/',
+						// 因为你是首页，懒加载没你份
 						component: Home
 					},
 					{
 						path: '/brazil',
-						component: Brazil
+						// 当路由首次被访问时，载入对应的组件
+						component: () => import('@/views/Brazil.vue')
 					},
 					{
 						path: '/panama',
-						component: Panama
+						component: () => import('@/views/Panama.vue')
 					},
 					{
 						path: '/Hawaii',
-						component: Hawaii
+						component: () => import('@/views/Hawaii.vue')
 					},
 					{
 						path: '/jamaica',
-						component: Jamaica
+						component: () => import('@/views/Jamaica.vue')
 					},
 					{
 						path: '/about',
-						component: About
+						component: () => import('@/views/About.vue')
 					}
 				]
 			})

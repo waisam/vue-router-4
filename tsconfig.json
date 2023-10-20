@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    // 设置路径别名映射，才能通过typescript构建
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
