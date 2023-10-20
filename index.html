@@ -8,7 +8,7 @@
 		<title>Vue Router 4 + TS</title>
 		<script lang="ts" type="module">
 			import { createApp } from 'vue'
-			import { createRouter, createWebHistory } from 'vue-router'
+			import { createRouter, createWebHashHistory } from 'vue-router'
 			import App from '@/App.vue'
 			import Home from '@/views/Home.vue'
 			// 引入页面组件 start
@@ -22,7 +22,7 @@
 			// 创建path和组件映射的路由
 			const router = createRouter({
 				// 使用浏览器历史功能
-				history: createWebHistory(),
+				history: createWebHashHistory(),
 				routes: [
 					{
 						path: '/',
