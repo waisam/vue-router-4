@@ -86,3 +86,7 @@ dist/assets/index-012e154b.js    94.39 kB │ gzip: 32.00 kB
 ```
 
 可以看到每一个组件都被编译成单独的文件。
+
+## About Navigation Component
+
+将 App.vue 中的链接提取到自己专用的、具有语义名称的组件文件中。遵循了 Vue.js 样式指南，将其命名为 TheNavigation。
