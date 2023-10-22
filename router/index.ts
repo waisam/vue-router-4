@@ -43,5 +43,7 @@ const routes = [
 export const router = createRouter({
   // 使用浏览器历史功能, 使用HTML5历史模式
   history: createWebHistory(),
+  // 为当前页面的导航链接自定义样式
+  linkActiveClass: 'active',
   routes
 })

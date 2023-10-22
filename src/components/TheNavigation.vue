@@ -13,3 +13,10 @@
     <router-link to="/about">About</router-link>
   </div>
 </template>
+
+<style lang="css">
+  #nav .active {
+    color: #ffcc00;
+    border-bottom: 2px solid #ff0000;
+  }
+</style>

@@ -90,3 +90,7 @@ dist/assets/index-012e154b.js    94.39 kB │ gzip: 32.00 kB
 ## About Navigation Component
 
 将 App.vue 中的链接提取到自己专用的、具有语义名称的组件文件中。遵循了 Vue.js 样式指南，将其命名为 TheNavigation。
+
+## About Router Link Active Class
+
+用 RouterOptions 的 linkActiveClass 属性, 为当前活动路由链接指定自定义样式
