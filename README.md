@@ -94,3 +94,8 @@ dist/assets/index-012e154b.js    94.39 kB │ gzip: 32.00 kB
 ## About Router Link Active Class
 
 用 RouterOptions 的 linkActiveClass 属性, 为当前活动路由链接指定自定义样式
+
+## About Dynamic Routes
+
+① 使用冒号`:`表示路径参数，当路径参数匹配时，展示相应的内容
+② 路径参数保存在`this.$route.params`中，组合式风格的 API 无法直接访问，需要使用`useRoute()`函数获取`route`对象，才能进行访问

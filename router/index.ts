@@ -36,6 +36,11 @@ const routes = [
   {
     path: '/about',
     component: () => import('@/views/About.vue')
+  },
+  {
+    // 使用`:name`作为路径参数，动态匹配`/destination/*`
+    path: '/destination/:name',
+    component: () => import('@/views/DestinationShow.vue')
   }
 ]
 
