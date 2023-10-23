@@ -40,6 +40,9 @@ const routes = [
   {
     // 使用`:name`作为路径参数，动态匹配`/destination/*`
     path: '/destination/:name',
+    // 为路由命令。 例如,与组件名一致, route-link可直接将to指定为路由名称，而不需要匹配path。
+    // 因此, 可以随心所欲指定想在浏览器地址栏展示的地址
+    name: 'DestinationShow',
     component: () => import('@/views/DestinationShow.vue')
   }
 ]
