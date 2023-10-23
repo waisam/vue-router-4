@@ -6,11 +6,12 @@
 <template>
   <div id="nav">
     <!-- 为导航添加路由 -->
-    <router-link to="/">Home</router-link>
-    <router-link v-for="destination in destinations" :to="`/${destination.slug}`">{{
-      destination.name
-    }}</router-link>
-    <router-link to="/about">About</router-link>
+    <router-link class="logo" to="/">Vue-Router@4</router-link>
+    <router-link
+      v-for="destination in destinations"
+      :to="{ name: 'DestinationShow', params: { name: destination.slug } }"
+      >{{ destination.name }}</router-link
+    >
   </div>
 </template>
 
