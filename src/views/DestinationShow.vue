@@ -1,16 +1,17 @@
 <script lang="ts" setup>
-  // 组合式风格无法访问this.$route, 需要导入`useRoute`函数
-  import { useRoute } from 'vue-router'
-
-  // 监听路由参数变量
   import { ref, watch } from 'vue'
 
-  const route = useRoute()
+  const props = defineProps({
+    name: {
+      type: String,
+      required: true
+    }
+  })
+
   const destination: any = ref(null)
 
-  // 监听路由参数的变化
   watch(
-    () => route.params.name, // 无法直接使用属性作为监听对象，需要将其以getter函数返回值的形式提供给watch
+    () => props.name, // props参数的变化
     async (newValue, oldValue) => {
       console.info('Goodbye ' + oldValue)
       // 用变化后的新值组成新的请求路径或作为新的请求参数

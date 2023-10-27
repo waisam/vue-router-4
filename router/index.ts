@@ -14,6 +14,8 @@ const routes = [
     // 为路由命令。 例如,与组件名一致, route-link可直接将to指定为路由名称，而不需要匹配path。
     // 因此, 可以随心所欲指定想在浏览器地址栏展示的地址
     name: 'DestinationShow',
+    // props设置为 true, 表示将这个$route.params传递给组件的props
+    props: true,
     // 当路由首次被访问时，载入对应的组件
     component: () => import('@/views/DestinationShow.vue')
   }
