@@ -1,5 +1,6 @@
 <script lang="ts" setup>
   import { ref, watch } from 'vue'
+  import ExperienceCard from '@/components/ExperienceCard.vue'
 
   const props = defineProps({
     name: {
@@ -29,6 +30,22 @@
     <div class="destination-details">
       <img :src="`/images/${destination.image}`" :alt="destination.name" />
       <p>{{ destination.description }}</p>
+    </div>
+  </section>
+
+  <section v-if="destination" class="experiences">
+    <h2>{{ destination.name }}'s Experiences</h2>
+    <div class="cards">
+      <router-link
+        v-for="experience in destination.experiences"
+        :key="experience.slug"
+        :to="{
+          name: 'ExperienceShow',
+          params: { dest: destination.slug, slug: experience.slug }
+        }"
+      >
+        <ExperienceCard :experience="experience" />
+      </router-link>
     </div>
   </section>
 </template>

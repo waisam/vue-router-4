@@ -18,6 +18,14 @@ const routes = [
     props: true,
     // 当路由首次被访问时，载入对应的组件
     component: () => import('@/views/DestinationShow.vue')
+  },
+  {
+    path: '/experience/:dest/:slug',
+    name: 'ExperienceShow',
+    // ...是JavaScript的扩展语法, 效果是将紧随的参数自动展开成函数的参数列表
+    // 以下操作将路由的参数对象展开构造成另外一个对象返回给props
+    props: route => ({ ...route.params }),
+    component: () => import('@/views/ExperienceShow.vue')
   }
 ]
 

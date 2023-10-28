@@ -131,3 +131,7 @@ dist/assets/index-012e154b.js    94.39 kB │ gzip: 32.00 kB
   > 当路由对象的 props 是一个对象时, 组件 props 和路由对象的 props 保持一致即可
 - 函数模式
   > 路由对象的 props 是一个返回 json 对象的函数, 返回的 json 对象须与组件 props 保持一致
+
+## About Experience Cards
+
+Vue 2 中组件只能存在一个根元素，Vue 3 没有这种限制
