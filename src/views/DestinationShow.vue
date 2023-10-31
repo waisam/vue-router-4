@@ -1,6 +1,7 @@
 <script lang="ts" setup>
   import { ref, watch } from 'vue'
   import ExperienceCard from '@/components/ExperienceCard.vue'
+  import GoBack from '@/components/TheGoBack.vue'
 
   const props = defineProps({
     name: {
@@ -27,6 +28,7 @@
 <template>
   <section v-if="destination" class="destination">
     <h2>{{ destination.name }}</h2>
+    <GoBack />
     <div class="destination-details">
       <img :src="`/images/${destination.image}`" :alt="destination.name" />
       <p>{{ destination.description }}</p>
