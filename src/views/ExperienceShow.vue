@@ -1,20 +1,15 @@
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { computed } from 'vue'
+  import { destinations } from '@/data.json'
   const props = defineProps({
-    dest: { type: String, required: true },
+    name: { type: String, required: true },
     slug: { type: String, required: true }
   })
-  const experience = ref(null)
-  fetch(`http://localhost:5173/data/${props.dest}.json`, {
-    method: 'POST',
-    headers: {
-      Authorization: 'authOne'
-    }
-  })
-    .then(response => response.json())
-    .then(destination => destination.experiences)
-    .then((experiences: Array<any>) => experiences.find(exp => exp.slug === props.slug))
-    .then(data => (experience.value = data))
+  const experience = computed(() =>
+    destinations
+      .find(dest => dest.slug === props.name)
+      .experiences.find(exper => exper.slug === props.slug)
+  )
 </script>
 
 <template>

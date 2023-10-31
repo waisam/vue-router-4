@@ -41,11 +41,12 @@
         :key="experience.slug"
         :to="{
           name: 'ExperienceShow',
-          params: { dest: destination.slug, slug: experience.slug }
+          params: { slug: experience.slug }
         }"
       >
         <ExperienceCard :experience="experience" />
       </router-link>
     </div>
+    <router-view />
   </section>
 </template>

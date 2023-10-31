@@ -135,3 +135,10 @@ dist/assets/index-012e154b.js    94.39 kB │ gzip: 32.00 kB
 ## About Experience Cards
 
 Vue 2 中组件只能存在一个根元素，Vue 3 没有这种限制
+
+## About Nested Routes
+
+① 在路由中配置 `children` 属性, 将映射到指定组件的路由设置为 `children` 的元素  
+② 在父路由映射的组件中嵌套 `<router-view>` 让子路由映射的组件显示在指定位置  
+③ 子路由 `path` 的值若以 `/` 开头, 即表示根路径; 若不以 `/` 开头, 则子路由的实际路径为 "父路由 path`/`子路由 path", 如: 父路由 path 为 `/destination/:name`, 子路由 path 为 `:slug`, 子路由的完整路径为 `/destination/:name/:slug` 。  
+④ 以 ③ 中的例子为例, 如果将所有的路由传递给父路由组件的 props, 会因为父路由组件 props 中, 没有设置用来接收传递给子路由组件的参数 `slug`, 而产生告警。解决的办法是只传递父路由组件需要的参数给它即可。传递无关的额外参数, 组件会因为 props 无法完全接收而告警。
